@@ -1,26 +1,30 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BLOCKS_ENDPOINT } from "../Constants";
+import { RpcContext } from "../contexts/rpcContext";
 
 export const Search = () => {
     const [res, setRes] = useState(null);
-
+    const {rpc} = useContext(RpcContext);
 
     async function handleSearch (e) {
+        if(!rpc) {
+            alert('no rpc connected!')
+            return
+        }
+
         console.log('finding block');
         e.preventDefault();
         const query = e.target.hash.value;
         // fetch blocks endpoint
         // const data = await(await fetch(BLOCKS_ENDPOINT)).json();
+        let blocks;
+        try {
+            blocks = await(await fetch(`${rpc}/${BLOCKS_ENDPOINT}`)).json();
+        }
+        catch(e) {
+            alert('Cannot connect to CashChain!')
+        }
         console.log(query);
-        // MOCK DATA
-        const blocks = [
-            {index:1, timestamp:Date.now(), hash:'daljsndkwnakdn',previousHash:'daljsndkwnakdn', data:{from:'a', to:'g', amount:'12', timestamp:Date.now()}},
-            {index:1, timestamp:Date.now(), hash:'daljsndkwnakdn',previousHash:'daljsndkwnakdn', data:{from:'b', to:'d', amount:'33', timestamp:Date.now()}},
-            {index:1, timestamp:Date.now(), hash:'daljsndkwnakdn',previousHash:'daljsndkwnakdn', data:{from:'c', to:'s', amount:'42', timestamp:Date.now()}},
-            {index:1, timestamp:Date.now(), hash:'daljsndkwnakdn',previousHash:'daljsndkwnakdn', data:{from:'d', to:'f', amount:'23', timestamp:Date.now()}},
-            {index:1, timestamp:Date.now(), hash:'daljsndkwnakdn',previousHash:'daljsndkwnakdn', data:{from:'e', to:'s', amount:'42', timestamp:Date.now()}},
-            {index:1, timestamp:Date.now(), hash:'daljsndkwnakdn',previousHash:'daljsndkwnakdn', data:{from:'f', to:'d', amount:'24', timestamp:Date.now()}},
-        ]
 
         const block = blocks.find(e => e.hash === query);
         
