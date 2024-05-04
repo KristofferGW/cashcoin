@@ -5,9 +5,6 @@ const listBlocksRoutes = require('./routes/listBlocksRoutes');
 const addBlockRoutes = require('./routes/addBlockRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const validateBlockchainRoutes = require('./routes/validateBlockchainRoutes');
-const Blockchain = require('./models/Blockchain');
-
-const cashCoin = new Blockchain();
 
 app.use(bodyParser.json());
 
