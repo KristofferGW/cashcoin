@@ -1,5 +1,3 @@
-const { time } = require("systeminformation");
-
 class Block {
     constructor(index, timestamp, data, previousHash = '') {
         this.index = index;
