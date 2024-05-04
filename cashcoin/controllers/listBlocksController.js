@@ -1,5 +1,7 @@
-const Block = require('./models/Block');
+const cashCoin = require('../utilities/starter');
 
 exports.listBlocks = (req, res) => {
-    // Logic for listing blocks
+    const chain = cashCoin.chain;
+
+    res.status(201).json({ success: true, data: chain });
 };

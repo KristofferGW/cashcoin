@@ -16,4 +16,8 @@ class Blockchain {
 
         return true;
     }
+
+    getLastBlock() {
+        return this.chain.at(-1);
+    }
 }
