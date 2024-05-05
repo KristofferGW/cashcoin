@@ -1,9 +1,10 @@
 {
   "name": "cashcoin",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A coin to be cash, no roadmap, no FA, no returns no refunds",
+  "main": "server.js",
   "scripts": {
+    "start":"node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
