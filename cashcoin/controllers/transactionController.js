@@ -6,4 +6,4 @@ exports.addTranscations = (req, res) => {
     const newTransaction = new Transaction(from, to, amount);
 
     res.status(201).json({ message: 'Transaction added successfully', transaction: newTransaction});
-}
+};

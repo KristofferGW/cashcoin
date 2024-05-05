@@ -1,3 +1,9 @@
+const cashCoin = require('../utilities/starter');
+
 exports.addBlock = (req, res) => {
-    // Implement logic to add new block
+    const block = req.body.block;
+
+    cashCoin.chain.push(block);
+
+    res.status(201).json({ success: true, data: block });
 };
