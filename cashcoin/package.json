@@ -4,12 +4,13 @@
   "description": "A coin to be cash, no roadmap, no FA, no returns no refunds",
   "main": "server.js",
   "scripts": {
-    "start":"node ./server.js",
+    "start": "node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "js-sha256": "^0.11.0"
   }
 }
