@@ -1,7 +1,7 @@
 const cashCoin = require('../utilities/starter');
 
 exports.addBlock = (req, res) => {
-    const block = req.body.block;
+    const block = req.body.data;
 
     cashCoin.addBlock(block)
 
