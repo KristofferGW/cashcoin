@@ -21,3 +21,5 @@ class Blockchain {
         return this.chain.at(-1);
     }
 }
+
+module.exports = Blockchain;
