@@ -8,10 +8,9 @@ export default class Transaction {
         this.amount = amount;
         this.timestamp = Date.now();
     }
-    async send () {
-        console.log(SUBMIT_TX_ENDPOINT);
+    async send (rpc) {
         try {
-            await axios.post(SUBMIT_TX_ENDPOINT, {from:this.from, to:this.to, amount:this.amount});
+            await axios.post(`${rpc}/${SUBMIT_TX_ENDPOINT}`, {from:this.from, to:this.to, amount:this.amount});
             return 'confirmed'
         }
         catch(e) {

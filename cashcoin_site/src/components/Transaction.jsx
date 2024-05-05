@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import Transaction from "../models/transaction";
+import { RpcContext } from "../contexts/rpcContext";
 
 
 export const TransactionForm = () => {
-
+    const {rpc} = useContext(RpcContext)
     async function handleSubmit (e) {
         e.preventDefault()
         console.log(e.target.to.value);
@@ -11,11 +13,8 @@ export const TransactionForm = () => {
             e.target.to.value,
             e.target.amount.value
         )
-        const confirmation = await tx.send()
-        alert(confirmation)
-        if(confirmation === 'confirmed') {
-            location.reload()
-        }
+        const confirmation = await tx.send(rpc)
+        alert("Transaction: " + confirmation);
     };
 
     return(
