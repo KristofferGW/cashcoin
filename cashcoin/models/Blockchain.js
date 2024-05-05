@@ -1,4 +1,5 @@
 const Block = require("./Block");
+const crypto = require('crypto');
 class Blockchain {
     constructor() {
         this.chain = [Block.genesis()];
@@ -23,7 +24,7 @@ class Blockchain {
     addBlock(data) {
         const previousBlock = this.getLastBlock()
         const timestamp = Date.now();
-        const nonce = 0;
+        const nonce = crypto.randomUUID();
 
         const hash = Block.hashBlock(nonce, timestamp, data, previousBlock.hash);
 
