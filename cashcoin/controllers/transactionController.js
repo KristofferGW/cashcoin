@@ -1,4 +1,4 @@
-const Transaction = require('./models/transaction.js');
+const Transaction = require('../models/Transaction');
 
 exports.addTranscations = (req, res) => {
     const { from, to, amount } = req.body;
