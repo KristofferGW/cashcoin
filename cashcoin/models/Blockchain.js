@@ -33,6 +33,10 @@ class Blockchain {
 
         this.chain.push(newBlock);
     }
+
+    addTransaction(transaction) {
+        this.addBlock(transaction);
+    }
 }
 
 module.exports = Blockchain;
