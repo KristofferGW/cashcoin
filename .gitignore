@@ -1,2 +1,3 @@
-/node_modules
+/cashcoin/node_modules
+/cashcoin_site/node_modules
 .gitignore

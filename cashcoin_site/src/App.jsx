@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { TransactionForm } from './components/Transaction'
 import { Blocklist } from './components/Blocklist'
 import { Search } from './components/Search'
+import { AddBlock } from './components/AddBlock'
 import { RpcInput } from './components/RpcInput'
 import { RpcContext } from './contexts/rpcContext'
 
@@ -17,6 +18,7 @@ function App() {
                 <TransactionForm/>
                 <Search/>
                 <Blocklist/>
+                <AddBlock />
             </RpcContext.Provider>
         </div>
     </>
