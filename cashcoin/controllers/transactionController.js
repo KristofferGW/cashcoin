@@ -8,7 +8,5 @@ exports.addTranscations = (req, res) => {
 
     cashCoin.addTransaction(newTransaction);
 
-    cashCoin.addBlock();
-
     res.status(201).json({ message: 'Transaction added successfully', transaction: newTransaction});
 };

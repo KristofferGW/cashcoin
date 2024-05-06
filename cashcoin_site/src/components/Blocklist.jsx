@@ -51,6 +51,12 @@ export const Blocklist = () => {
         }
     }, [rpc]);
 
+    // load blocks periodically
+    useEffect(() => {
+        const interval = setInterval(load_blockchain, 5000);
+        return () => clearInterval(interval);
+    });
+
     useEffect(() => {} , [trs])
     return(
         <div>
