@@ -16,9 +16,9 @@ function App() {
             <RpcContext.Provider value={{rpc, setRpc}}>
                 <RpcInput/>
                 <TransactionForm/>
+                <AddBlock />
                 <Search/>
                 <Blocklist/>
-                <AddBlock />
             </RpcContext.Provider>
         </div>
     </>
