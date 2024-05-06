@@ -10,7 +10,6 @@ export const Blocklist = () => {
 
     async function load_blockchain () {
         if (rpc === null) {
-            alert('no rpc found');
             return;
         }
         let data;
@@ -29,21 +28,16 @@ export const Blocklist = () => {
         
     }
 
-    function buildTrs (blocks) {
-        let elements = []
-        for(let block of blocks) {
-            const data = block;
-            elements.push(
-                <tr>
-                    <td>{data.nonce}</td>
-                    <td>{data.timestamp}</td>
-                    <td>{data.hash}</td>
-                </tr>
-            )
-        }
-        return elements
+    function buildTrs(blocks) {
+        return blocks.map((block, index) => (
+            <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{block.nonce}</td>
+                <td>{block.timestamp}</td>
+                <td>{block.hash}</td>
+            </tr>
+        ));
     }
-
     // load blocks on load
     useEffect(() => {
         if(rpc !== null) {
@@ -64,6 +58,7 @@ export const Blocklist = () => {
             <table id="blocklist_table">
                 <tr>
                     <th>Index</th>
+                    <th>Nonce</th>
                     <th>Timestamp</th>
                     <th>Hash</th>
                 </tr>
