@@ -19,14 +19,16 @@ export const Search = () => {
         // const data = await(await fetch(BLOCKS_ENDPOINT)).json();
         let blocks;
         try {
-            blocks = await(await fetch(`${rpc}/${BLOCKS_ENDPOINT}`)).json();
+            blocks = (await(await fetch(`${rpc}/${BLOCKS_ENDPOINT}`)).json()).data;
         }
         catch(e) {
             alert('Cannot connect to CashChain!')
         }
         console.log(query);
-
-        const block = blocks.find(e => e.hash === query);
+        console.log(blocks);
+        let block;
+        block = (blocks.find(e => e.hash === query));
+        console.log(block);
         
         if(!block) {return null};
 
@@ -49,10 +51,15 @@ export const Search = () => {
                     <p>Hash</p>
                     <p>{block.hash}</p>
                 </div>
-                <div className="inline">
-                    <p>Data</p>
-                    <p>{`[${new Date(data.timestamp).toUTCString()}] - Transaction from ${data.from} to ${data.to} for ${data.amount} Cashcoin`}</p>
-                </div>
+                {
+                    data.length > 0 ?
+                    <div className="inline">
+                        <p>Data</p>
+                        <p>{`[${new Date(data.timestamp).toUTCString()}] - Transaction from ${data.from} to ${data.to} for ${data.amount} Cashcoin`}</p>
+                    </div>
+                    :
+                    <p>No Data</p>
+                }
             </div>
         )
 

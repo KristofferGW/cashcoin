@@ -10,7 +10,7 @@ export default class Transaction {
     }
     async send (rpc) {
         try {
-            await axios.post(`${rpc}/${SUBMIT_TX_ENDPOINT}`, {from:this.from, to:this.to, amount:this.amount});
+            console.log(await axios.post(`${rpc}/${SUBMIT_TX_ENDPOINT}`, {from:this.from, to:this.to, amount:this.amount}));
             return 'confirmed'
         }
         catch(e) {

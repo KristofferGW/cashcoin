@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { BLOCKS_ENDPOINT } from "../Constants";
 import { RpcContext } from "../contexts/rpcContext";
+import axios from "axios";
 
 export const Blocklist = () => {
     const [trs, setTrs] = useState(<></>);
@@ -15,7 +16,8 @@ export const Blocklist = () => {
         let data;
         // fetch blocks endpoint
         try {
-            data = await(await fetch(`${rpc}/${BLOCKS_ENDPOINT}`)).json();
+            data = (await axios.get(`${rpc}/${BLOCKS_ENDPOINT}`)).data.data;
+            console.log(data);
         }
         catch(e) {
             alert('Cannot connect to CashChain!');
@@ -30,11 +32,12 @@ export const Blocklist = () => {
     function buildTrs (blocks) {
         let elements = []
         for(let block of blocks) {
+            const data = block;
             elements.push(
                 <tr>
-                    <td>{block.index}</td>
-                    <td>{block.timestamp}</td>
-                    <td>{block.hash}</td>
+                    <td>{data.nonce}</td>
+                    <td>{data.timestamp}</td>
+                    <td>{data.hash}</td>
                 </tr>
             )
         }
